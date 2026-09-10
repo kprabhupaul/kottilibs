@@ -18,16 +18,16 @@ jobs:
           ref: 'main'
           fetch-depth: 0
 
-      # 2. rc-libraries ఫోల్డర్‌ను zip చేయడం
+      # 2. kotti-libs ఫోల్డర్‌ను zip చేయడం
       - name: Build Clean Plugin ZIP
         run: |
-          zip -r rc-libraries.zip rc-libraries/
+          zip -r kotti-libs.zip kotti-libs/
 
       # 3. Release Assets లోకి ZIP అప్‌లోడ్ చేయడం
       - name: Upload ZIP to Release Assets
         uses: softprops/action-gh-release@v2
         with:
-          files: rc-libraries.zip
+          files: kotti-libs.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -52,5 +52,5 @@ jobs:
       # 6. jsDelivr CDN Cache ని Purge చేయడం (తక్షణ ఆటోమేటిక్ రీఫ్రెష్ కోసం)
       - name: Purge jsDelivr Cache
         run: |
-          curl -i https://purge.jsdelivr.net/gh/kprabhupaul/rclibraries/update.json
-          curl -i https://purge.jsdelivr.net/gh/kprabhupaul/rclibraries@main/update.json
+          curl -i https://purge.jsdelivr.net/gh/kprabhupaul/kottilibs/update.json
+          curl -i https://purge.jsdelivr.net/gh/kprabhupaul/kottilibs@main/update.json
