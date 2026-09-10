@@ -35,7 +35,7 @@ jobs:
       - name: Update update.json File
         run: |
           TAG_NAME="${{ github.event.release.tag_name }}"
-          DOWNLOAD_URL="https://github.com/${{ github.repository }}/releases/download/${TAG_NAME}/rc-libraries.zip"
+          DOWNLOAD_URL="https://github.com/${{ github.repository }}/releases/download/${TAG_NAME}/kotti-libs.zip"
           
           jq --arg v "$TAG_NAME" --arg u "$DOWNLOAD_URL" \
             '.version = $v | .download_url = $u' update.json > temp.json && mv temp.json update.json
